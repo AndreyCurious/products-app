@@ -1,10 +1,11 @@
-import { useState, type FC } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
 import './LoginPage.css';
 import LoginInput from '../../components/login/loginInput/LoginInput';
 import RegisterModal from '../../components/login/registerModal/RegisterModal';
+import logoImg from '../../assets/Frame 1.svg';
 
 export interface LoginForm {
     username: string;
@@ -41,17 +42,22 @@ const LoginPage: FC = () => {
         }
     };
 
+    useEffect(() => {
+        const token =
+            localStorage.getItem('accessToken') ||
+            sessionStorage.getItem('accessToken');
+        if (token) {
+            navigate('/products', { replace: true });
+        }
+    }, [navigate]);
+
     return (
         <>
             <div className="login-container">
                 <div className="border-container">
                     <div className="login-box">
                         <div className="logo-container">
-                            <img
-                                alt="logo"
-                                src="../../assets/Frame 1.svg"
-                                width={52}
-                            />
+                            <img alt="logo" src={logoImg} width={52} />
                         </div>
 
                         <h2 className="login-title">Добро пожаловать!</h2>

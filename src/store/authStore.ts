@@ -97,11 +97,11 @@ export const isAuthenticated = (): boolean => {
         localStorage.getItem('accessToken') ||
         sessionStorage.getItem('accessToken');
 
-    const storageRefreshToken =
+    const refreshToken =
         localStorage.getItem('refreshToken') ||
         sessionStorage.getItem('refreshToken');
 
-    return !!(accessToken || storageRefreshToken);
+    return !!(accessToken || refreshToken);
 };
 
 export const hasRefreshToken = (): boolean => {

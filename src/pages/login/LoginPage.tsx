@@ -49,7 +49,7 @@ const LoginPage: FC = () => {
                         <div className="logo-container">
                             <img
                                 alt="logo"
-                                src="src\assets\Frame 1.svg"
+                                src="../../assets/Frame 1.svg"
                                 width={52}
                             />
                         </div>
